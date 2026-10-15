@@ -34,6 +34,13 @@ The header defines `LAMP_…`, `SW_…` and `SOL_…` numbers (the RPU OS's own 
 `SolenoidAssociatedSwitches[]`, the switch-to-coil table for the bumpers and slingshots that
 `RPU_SetupGameSwitches()` takes.
 
+## Credits
+
+For **RetroPinUpgrade (RPU)** games: RPU is Dick Hamill's
+([github.com/RetroPinUpgrade](https://github.com/RetroPinUpgrade)). The Scorpion's numbers come from
+his Scorpion2022; the Star Trek's were checked against Dave's Think Tank's
+[Star Trek 2025](https://github.com/DavesThinkTank/Bally-Star-Trek).
+
 ## Licence
 
 GPL-3.0, as the RPU OS and its games are. See `LICENSE`. Contributions come in under the same
