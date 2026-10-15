@@ -9,6 +9,9 @@ Runs on every pull request. For each names/<machine>.json:
 - every lamp, switch and solenoid has a whole number and a name of 1 to 40 characters, no repeats;
 - every LAMP_, SW_ and SOL_ number the header defines has a name, and every name has a define;
 - the header is listed in library.properties' includes= and in the README's machine table.
+And for each layouts/<machine>.json (where things sit on the playfield, for simulators and tools):
+- it matches a names file, its items are lamps, switches or coils the header defines, at x and y
+  between 0 and 1 (fractions of the playfield), and its manual frame (if any) is inside the page.
 """
 import json
 import re
@@ -88,6 +91,33 @@ def check(path: Path, includes: set, readme: str, fix: bool) -> list:
     return problems
 
 
+def check_layout(path: Path, defined_by_header: dict) -> list:
+    problems = []
+    try:
+        d = json.loads(path.read_text())
+    except json.JSONDecodeError as e:
+        return [f"not valid JSON: {e}"]
+    header = d.get("header")
+    if header not in defined_by_header:
+        return [f'"header" must name a machine header with a names file ({header!r} has none)']
+    defined = defined_by_header[header]
+    kinds = {"lamp": "lamps", "switch": "switches", "coil": "solenoids"}
+    for it in d.get("items", []):
+        k = it.get("kind")
+        if k in kinds:
+            if not isinstance(it.get("n"), int) or it["n"] not in defined[kinds[k]]:
+                problems.append(f"{k} {it.get('n')} isn't defined in {header}")
+        for c in ("x", "y"):
+            if not isinstance(it.get(c), (int, float)) or not 0 <= it[c] <= 1:
+                problems.append(f"{k} {it.get('n')}: {c} must be between 0 and 1")
+    m = d.get("manual")
+    if m:
+        f = m.get("frame", [])
+        if not (isinstance(m.get("page"), int) and len(f) == 4 and all(0 <= v <= 1 for v in f) and f[0] < f[2] and f[1] < f[3]):
+            problems.append('"manual" needs a page number and a frame [left, top, right, bottom] of fractions')
+    return problems
+
+
 def main() -> None:
     fix = "--fix" in sys.argv[1:]
     props = (ROOT / "library.properties").read_text()
@@ -108,6 +138,20 @@ def main() -> None:
         total += len(problems)
         if not problems:
             print(f"names/{path.name}: OK")
+    by_header = {}
+    for path in files:
+        try:
+            d = json.loads(path.read_text())
+            by_header[d["header"]] = header_numbers(ROOT / "src" / d["header"])
+        except (json.JSONDecodeError, KeyError, OSError):
+            pass
+    for path in sorted((ROOT / "layouts").glob("*.json")):
+        problems = check_layout(path, by_header)
+        for p in problems:
+            print(f"layouts/{path.name}: {p}")
+        total += len(problems)
+        if not problems:
+            print(f"layouts/{path.name}: OK")
     for h in sorted(headers - named):
         print(f"src/{h}: no names/ file names it")
         total += 1

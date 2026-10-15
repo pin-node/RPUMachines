@@ -20,5 +20,10 @@ Thanks for helping. One pull request per machine.
    machine. The same check runs on your pull request.
 5. If you can, build a game against it: say which one in the pull request.
 
+**Layouts (optional):** the easiest way is rpu-sim's layout editor
+([github.com/wifijt/rpu-sim](https://github.com/wifijt/rpu-sim)): it opens your manual's playfield page,
+you drag switches and click each lamp into place, and it saves `layouts/<machine>.json`. Positions
+only: never add the manual's drawing or any artwork.
+
 **Never include ROM data**: no dumps, no bytes copied from a ROM. Numbers and names from manuals and
 schematics only.

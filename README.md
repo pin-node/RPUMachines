@@ -12,6 +12,11 @@ Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
 | Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | `names/bally-star-trek-1979.json` |
 | Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | `names/williams-scorpion-1980.json` |
 
+Some machines also have a **layout**, `layouts/<machine>.json`: where each lamp, switch and coil sits
+on the playfield, as fractions of its width and height, and which page of the manual has the
+playfield drawing. Simulators and lamp tools use it (rpu-sim draws the playfield from it). The
+manual itself is never stored here: tools render the page from your own copy.
+
 **Add yours:** see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Install
