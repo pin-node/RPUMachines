@@ -4,8 +4,8 @@ Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
 
 - a header, `src/<Machine>.h`, with its lamp, switch and solenoid numbers, shared by every game
   written for that machine;
-- a names file, `names/<machine>.json`, with the manufacturer's name for each one. PinNode's
-  converter and app use these ("Lamp 42 · Same player shoots again").
+- a names file, `names/<machine>.json`, with the manufacturer's name for each one, so tools can
+  label test screens and logs ("Lamp 42 · Same player shoots again").
 
 | Machine | Header | Names |
 |---|---|---|
