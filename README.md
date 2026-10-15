@@ -16,11 +16,9 @@ Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
 
 ## Install
 
-Arduino IDE: on **[github.com/pin-node/RPUMachines](https://github.com/pin-node/RPUMachines)**, click
-**Code → Download ZIP**, then **Sketch → Include Library → Add .ZIP Library…** and pick that ZIP.
+Arduino IDE: **Tools → Manage Libraries…**, search **RPUMachines**, and click **Install**.
 
-arduino-cli: `arduino-cli lib install --git-url https://github.com/pin-node/RPUMachines.git` (needs
-`library.enable_unsafe_install`).
+arduino-cli: `arduino-cli lib install RPUMachines`.
 
 ## Use
 
