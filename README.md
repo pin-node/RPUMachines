@@ -10,6 +10,7 @@ Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
 | Machine | Header | Names |
 |---|---|---|
 | Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | `names/bally-star-trek-1979.json` |
+| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | `names/williams-scorpion-1980.json` |
 
 **Add yours:** see [CONTRIBUTING.md](CONTRIBUTING.md).
 
