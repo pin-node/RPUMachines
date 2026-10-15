@@ -38,3 +38,6 @@ The header defines `LAMP_…`, `SW_…` and `SOL_…` numbers (the RPU OS's own 
 
 GPL-3.0, as the RPU OS and its games are. See `LICENSE`. Contributions come in under the same
 licence.
+
+Machine names are trademarks of their owners and are used only to identify the machine each
+definition describes. RPUMachines isn't affiliated with or endorsed by them.
