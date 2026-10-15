@@ -16,11 +16,9 @@ Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
 
 ## Install
 
-Arduino IDE: on **[github.com/pin-node/RPUMachines](https://github.com/pin-node/RPUMachines)**, click
-**Code → Download ZIP**, then **Sketch → Include Library → Add .ZIP Library…** and pick that ZIP.
+Arduino IDE: **Tools → Manage Libraries…**, search **RPUMachines**, and click **Install**.
 
-arduino-cli: `arduino-cli lib install --git-url https://github.com/pin-node/RPUMachines.git` (needs
-`library.enable_unsafe_install`).
+arduino-cli: `arduino-cli lib install RPUMachines`.
 
 ## Use
 
@@ -36,7 +34,17 @@ The header defines `LAMP_…`, `SW_…` and `SOL_…` numbers (the RPU OS's own 
 `SolenoidAssociatedSwitches[]`, the switch-to-coil table for the bumpers and slingshots that
 `RPU_SetupGameSwitches()` takes.
 
+## Credits
+
+For **RetroPinUpgrade (RPU)** games: RPU is Dick Hamill's
+([github.com/RetroPinUpgrade](https://github.com/RetroPinUpgrade)). The Scorpion's numbers come from
+his Scorpion2022; the Star Trek's were checked against Dave's Think Tank's
+[Star Trek 2025](https://github.com/DavesThinkTank/Bally-Star-Trek).
+
 ## Licence
 
 GPL-3.0, as the RPU OS and its games are. See `LICENSE`. Contributions come in under the same
 licence.
+
+Machine names are trademarks of their owners and are used only to identify the machine each
+definition describes. RPUMachines isn't affiliated with or endorsed by them.
