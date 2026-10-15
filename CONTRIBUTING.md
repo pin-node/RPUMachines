@@ -2,12 +2,11 @@
 
 Thanks for helping. One pull request per machine.
 
-1. **Header:** copy `src/BallyStarTrek1979.h` to `src/<Maker><Title><Year>.h` (for example
-   `src/WilliamsScorpion1980.h`). Keep its layout: `LAMP_…`, `SW_…` and `SOL_…` defines with the RPU
+1. **Header:** copy any header in `src/` to `src/<Maker><Title><Year>.h`. Keep its layout: `LAMP_…`, `SW_…` and `SOL_…` defines with the RPU
    OS's numbers, and `SolenoidAssociatedSwitches[]` for bumpers and slingshots where the RPU OS fires
    them (Bally, Stern). Williams System 3-7 fire them in hardware: leave the table out, as
    `src/WilliamsScorpion1980.h` does. Change the include guard.
-2. **Names:** copy `names/bally-star-trek-1979.json` to `names/<maker>-<title>-<year>.json`. Fill in:
+2. **Names:** copy any file in `names/` to `names/<maker>-<title>-<year>.json`. Fill in:
    - `machine`: maker, title, year and game number;
    - `header`: your header's file name;
    - `sources`: the documents you read the names from (manual pages, schematic numbers);
