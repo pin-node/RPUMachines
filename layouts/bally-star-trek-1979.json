@@ -1,18 +1,8 @@
 {
  "machine": "Bally Star Trek (1979)",
  "header": "BallyStarTrek1979.h",
- "manual": {
-  "page": 20,
-  "frame": [
-   0.0969,
-   0.019,
-   0.6361,
-   0.8825
-  ],
-  "about": "The playfield drawing in Bally's manual for #1148-E (Figure V). Tools render it from your own copy; it is not stored here."
- },
  "aspect": 2.0959,
- "source": "Switch and coil positions read from the manual's playfield drawing (Figure V). Lamp positions placed over a playfield photo, with most taken from a Visual Pinball table (lamp numbers converted from PinMAME's) and checked by hand.",
+ "source": "Switches and coils placed from the manual's playfield drawing (Figure V); lamps placed over a playfield photo, most from a Visual Pinball table (lamp numbers converted from PinMAME's), checked by hand.",
  "items": [
   {
    "kind": "bumper",

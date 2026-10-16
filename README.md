@@ -1,26 +1,24 @@
 # RPUMachines
 
-Machine definitions for RetroPinUpgrade (RPU) games. Each machine has:
+Machine definitions for RetroPinUpgrade (RPU) games: one set of files per machine, shared by every
+game and tool written for it.
 
-- a header, `src/<Machine>.h`, with its lamp, switch and solenoid numbers, shared by every game
-  written for that machine;
-- a names file, `names/<machine>.json`, with the manufacturer's name for each one, so tools can
-  label test screens and logs ("Lamp 42 · Same player shoots again").
-
-| Machine | Header | Names |
+| File | What it holds | Who uses it |
 |---|---|---|
-| Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | `names/bally-star-trek-1979.json` |
-| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | `names/williams-scorpion-1980.json` |
+| `src/<Machine>.h` | Lamp, switch and coil numbers (`LAMP_…`, `SW_…`, `SOL_…`) | Your game's code |
+| `names/<machine>.json` | The manufacturer's name for each lamp, switch and coil | Test screens, logs, simulators |
+| `layouts/<machine>.json` (optional) | Where each lamp, switch and coil sits on the playfield, and what the playfield does on its own (`physics`: which coil opens which switches; `ballStarts`: where the ball rests at power-on) | Simulators ([rpu-sim](https://github.com/wifijt/rpu-sim)), lamp tools |
 
-Some machines also have a **layout**, `layouts/<machine>.json`: where each lamp, switch and coil sits
-on the playfield, as fractions of its width and height, and which page of the manual has the
-playfield drawing. Simulators and lamp tools use it (rpu-sim draws the playfield from it). The
-manual itself is never stored here: tools render the page from your own copy.
-A layout can also say what the playfield does on its own, for simulators: `physics` (which coil
-opens which switches: the outhole kicker serves the ball, a saucer kicks out, a reset stands the
-drop targets up) and `ballStarts` (where the ball rests at power-on).
+| Machine | Header | Names | Layout |
+|---|---|---|---|
+| Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | ✓ | ✓ |
+| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | ✓ | – |
 
-**Add yours:** see [CONTRIBUTING.md](CONTRIBUTING.md).
+Positions in a layout are fractions of the playfield's width and height, from its top-left corner.
+Layouts hold positions only: never artwork, photos or manual pages.
+
+**Add a machine:** see [CONTRIBUTING.md](CONTRIBUTING.md). Every pull request is checked by
+`tools/check.py`.
 
 ## Install
 
