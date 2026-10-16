@@ -11,8 +11,7 @@ Runs on every pull request. For each names/<machine>.json:
 - the header is listed in library.properties' includes= and in the README's machine table.
 And for each layouts/<machine>.json (where things sit on the playfield, for simulators and tools):
 - it matches a names file, its items are lamps, switches or coils the header defines, at x and y
-  between 0 and 1 (fractions of the playfield), its manual frame (if any) is inside the page, and its
-  physics (which coil opens which switches) and ballStarts name coils and switches the header defines.
+  between 0 and 1 (fractions of the playfield), and its physics (which coil opens which switches) and ballStarts name coils and switches the header defines.
 """
 import json
 import re
@@ -120,11 +119,6 @@ def check_layout(path: Path, defined_by_header: dict) -> list:
     for sw in d.get("ballStarts", []):
         if sw not in defined["switches"]:
             problems.append(f"ballStarts: switch {sw} isn't defined in {header}")
-    m = d.get("manual")
-    if m:
-        f = m.get("frame", [])
-        if not (isinstance(m.get("page"), int) and len(f) == 4 and all(0 <= v <= 1 for v in f) and f[0] < f[2] and f[1] < f[3]):
-            problems.append('"manual" needs a page number and a frame [left, top, right, bottom] of fractions')
     return problems
 
 

@@ -20,10 +20,12 @@ Thanks for helping. One pull request per machine.
    machine. The same check runs on your pull request.
 5. If you can, build a game against it: say which one in the pull request.
 
-**Layouts (optional):** the easiest way is rpu-sim's layout editor
-([github.com/wifijt/rpu-sim](https://github.com/wifijt/rpu-sim)): it opens your manual's playfield page,
-you drag switches and click each lamp into place, and it saves `layouts/<machine>.json`. Positions
-only: never add the manual's drawing or any artwork.
+**Layouts (optional):** use [rpu-sim](https://github.com/wifijt/rpu-sim): run your game with a picture of
+the playfield (`./play.py MyGame --image playfield.jpg`), line the picture up, then in **Edit
+layout** drag each switch, coil and lamp from the lists onto its spot, and **Save layout**. If a
+Visual Pinball table exists for the machine, `tools/vpx_import.py` in rpu-sim places most lamps for
+you. Add `physics` and `ballStarts` (see the Star Trek layout) so a simulator can serve the ball.
+Positions only: never add the picture or any artwork.
 
 **Never include ROM data**: no dumps, no bytes copied from a ROM. Numbers and names from manuals and
 schematics only.
