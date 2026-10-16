@@ -7,7 +7,7 @@ game and tool written for it.
 |---|---|---|
 | `src/<Machine>.h` | Lamp, switch and coil numbers (`LAMP_…`, `SW_…`, `SOL_…`) | Your game's code |
 | `names/<machine>.json` | The manufacturer's name for each lamp, switch and coil | Test screens, logs, simulators |
-| `layouts/<machine>.json` (optional) | Where each lamp, switch and coil sits on the playfield, and what the playfield does on its own (`physics`: which coil opens which switches; `ballStarts`: where the ball rests at power-on) | Simulators ([rpu-sim](https://github.com/wifijt/rpu-sim)), lamp tools |
+| `layouts/<machine>.json` (optional) | Where each lamp, switch and coil sits on the playfield, and what the playfield does on its own (`physics`: which switches each coil opens or closes, e.g. the trough serving the ball opens the outhole switch; `ballStarts`: where the ball rests at power-on) | Simulators ([rpu-sim](https://github.com/wifijt/rpu-sim)), lamp tools |
 
 | Machine | Header | Names | Layout |
 |---|---|---|---|
