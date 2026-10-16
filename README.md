@@ -16,6 +16,9 @@ Some machines also have a **layout**, `layouts/<machine>.json`: where each lamp,
 on the playfield, as fractions of its width and height, and which page of the manual has the
 playfield drawing. Simulators and lamp tools use it (rpu-sim draws the playfield from it). The
 manual itself is never stored here: tools render the page from your own copy.
+A layout can also say what the playfield does on its own, for simulators: `physics` (which coil
+opens which switches: the outhole kicker serves the ball, a saucer kicks out, a reset stands the
+drop targets up) and `ballStarts` (where the ball rests at power-on).
 
 **Add yours:** see [CONTRIBUTING.md](CONTRIBUTING.md).
 
