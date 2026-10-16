@@ -39,5 +39,13 @@ physics SOL_OUTHOLE opens SW_OUTHOLE closes SW_SHOOTER_LANE
 close SW_OUTHOLE
 ```
 
+A machine with a ball trough (several balls) describes the trough instead, and the simulator counts
+the balls: its switches from the exit end, the coil that serves, the coil that feeds it from the
+outhole, and how many balls it holds at power-on (see the Scorpion file, and rpu-sim's README):
+
+```
+trough SW_BALL_1 SW_BALL_2 serve SOL_BALL_RAMP_THROWER feed SOL_OUTHOLE from SW_OUTHOLE balls 2
+```
+
 **Never include ROM data**: no dumps, no bytes copied from a ROM. Numbers and names from manuals and
 schematics only.

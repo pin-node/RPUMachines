@@ -13,8 +13,9 @@ And for each layouts/<machine>.json (where things sit on the playfield, for simu
 - it matches a names file, its items are lamps, switches or coils the header defines, at x and y
   between 0 and 1 (fractions of the playfield). Layouts hold positions only.
 And for each physics/<machine>.sim (what the playfield does on its own when a coil fires):
-- it matches a names file, and every line is 'physics SOL_X opens SW_A ... [closes SW_B ...]' or
-  'close SW_X' (where the ball rests at power-on), naming coils and switches the header defines.
+- it matches a names file, and every line is 'physics SOL_X opens SW_A ... [closes SW_B ...]',
+  'trough SW_EXIT ... serve SOL_X [to SW_Y] [feed SOL_Z from SW_W] [balls N]' or 'close SW_X'
+  (where the ball rests at power-on), naming coils and switches the header defines.
 """
 import json
 import re
@@ -124,7 +125,7 @@ def header_names(header: Path) -> set:
 
 
 def check_physics(path: Path, header_by_id: dict) -> list:
-    """physics/<machine>.sim: physics SOL_X opens SW_A ... [closes SW_B ...], close SW_X, comments."""
+    """physics/<machine>.sim: physics SOL_X opens SW_A ... [closes SW_B ...], trough ..., close SW_X, comments."""
     if path.stem not in header_by_id:
         return [f"no names/{path.stem}.json for this machine"]
     header = header_by_id[path.stem]
@@ -138,8 +139,21 @@ def check_physics(path: Path, header_by_id: dict) -> list:
             want = [(words[1], "SW_")]
         elif words[0] == "physics" and len(words) >= 4 and words[2] in ("opens", "closes"):
             want = [(words[1], "SOL_")] + [(w, "SW_") for w in words[2:] if w not in ("opens", "closes")]
+        elif words[0] == "trough" and "serve" in words[2:]:
+            want, key = [], "SW_"
+            for w in words[1:]:
+                if w in ("serve", "feed"):
+                    key = "SOL_"
+                elif w in ("to", "from"):
+                    key = "SW_"
+                elif w == "balls":
+                    key = None
+                elif key:
+                    want.append((w, key))
+                elif not w.isdigit():
+                    problems.append(f"line {i}: balls takes a number, not {w}")
         else:
-            problems.append(f"line {i}: expected 'physics SOL_X opens SW_A ...' or 'close SW_X'")
+            problems.append(f"line {i}: expected 'physics SOL_X opens SW_A ...', 'trough SW_A ... serve SOL_X ...' or 'close SW_X'")
             continue
         for w, prefix in want:
             if not w.startswith(prefix) or w not in names:
