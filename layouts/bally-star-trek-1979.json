@@ -624,5 +624,34 @@
    "x": 0.56,
    "y": 0.5713
   }
+ ],
+ "physics": [
+  {
+   "coil": 6,
+   "opens": [
+    7
+   ],
+   "note": "outhole kicker serves the ball"
+  },
+  {
+   "coil": 7,
+   "opens": [
+    31
+   ],
+   "note": "saucer kicks out"
+  },
+  {
+   "coil": 13,
+   "opens": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "note": "drop targets stand up"
+  }
+ ],
+ "ballStarts": [
+  7
  ]
 }

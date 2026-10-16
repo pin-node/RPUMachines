@@ -11,7 +11,8 @@ Runs on every pull request. For each names/<machine>.json:
 - the header is listed in library.properties' includes= and in the README's machine table.
 And for each layouts/<machine>.json (where things sit on the playfield, for simulators and tools):
 - it matches a names file, its items are lamps, switches or coils the header defines, at x and y
-  between 0 and 1 (fractions of the playfield), and its manual frame (if any) is inside the page.
+  between 0 and 1 (fractions of the playfield), its manual frame (if any) is inside the page, and its
+  physics (which coil opens which switches) and ballStarts name coils and switches the header defines.
 """
 import json
 import re
@@ -110,6 +111,15 @@ def check_layout(path: Path, defined_by_header: dict) -> list:
         for c in ("x", "y"):
             if not isinstance(it.get(c), (int, float)) or not 0 <= it[c] <= 1:
                 problems.append(f"{k} {it.get('n')}: {c} must be between 0 and 1")
+    for ph in d.get("physics", []):
+        if ph.get("coil") not in defined["solenoids"]:
+            problems.append(f"physics: coil {ph.get('coil')} isn't defined in {header}")
+        for sw in ph.get("opens", []):
+            if sw not in defined["switches"]:
+                problems.append(f"physics: switch {sw} isn't defined in {header}")
+    for sw in d.get("ballStarts", []):
+        if sw not in defined["switches"]:
+            problems.append(f"ballStarts: switch {sw} isn't defined in {header}")
     m = d.get("manual")
     if m:
         f = m.get("frame", [])
