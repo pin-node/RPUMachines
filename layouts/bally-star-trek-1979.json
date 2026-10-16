@@ -12,7 +12,7 @@
   "about": "The playfield drawing in Bally's manual for #1148-E (Figure V). Tools render it from your own copy; it is not stored here."
  },
  "aspect": 2.0959,
- "source": "Switch and coil positions read from the manual's playfield drawing. Lamps: not placed yet.",
+ "source": "Switch and coil positions read from the manual's playfield drawing (Figure V). Lamp positions placed over a playfield photo, with most taken from a Visual Pinball table (lamp numbers converted from PinMAME's) and checked by hand.",
  "items": [
   {
    "kind": "bumper",
@@ -73,36 +73,36 @@
   {
    "kind": "switch",
    "n": 0,
-   "x": 0.2209,
-   "y": 0.4673,
+   "x": 0.1676,
+   "y": 0.5044,
    "shape": "drop"
   },
   {
    "kind": "switch",
    "n": 1,
-   "x": 0.2391,
-   "y": 0.4412,
+   "x": 0.1799,
+   "y": 0.4853,
    "shape": "drop"
   },
   {
    "kind": "switch",
    "n": 2,
-   "x": 0.2367,
-   "y": 0.4163,
+   "x": 0.1907,
+   "y": 0.4648,
    "shape": "drop"
   },
   {
    "kind": "switch",
    "n": 3,
-   "x": 0.2367,
-   "y": 0.3978,
+   "x": 0.1968,
+   "y": 0.4479,
    "shape": "drop"
   },
   {
    "kind": "switch",
    "n": 4,
-   "x": 0.9381,
-   "y": 0.3584,
+   "x": 0.9417,
+   "y": 0.3392,
    "shape": "lane"
   },
   {
@@ -115,15 +115,15 @@
   {
    "kind": "switch",
    "n": 17,
-   "x": 0.1383,
-   "y": 0.1807,
+   "x": 0.1137,
+   "y": 0.1725,
    "shape": "button"
   },
   {
    "kind": "switch",
    "n": 21,
-   "x": 0.1917,
-   "y": 0.1378,
+   "x": 0.1645,
+   "y": 0.1094,
    "shape": "button"
   },
   {
@@ -192,36 +192,36 @@
   {
    "kind": "switch",
    "n": 26,
-   "x": 0.7451,
-   "y": 0.5136,
+   "x": 0.8216,
+   "y": 0.5095,
    "shape": "target"
   },
   {
    "kind": "switch",
    "n": 27,
-   "x": 0.7124,
-   "y": 0.4876,
+   "x": 0.7785,
+   "y": 0.4824,
    "shape": "target"
   },
   {
    "kind": "switch",
    "n": 28,
-   "x": 0.6748,
-   "y": 0.4603,
+   "x": 0.7447,
+   "y": 0.4493,
    "shape": "target"
   },
   {
    "kind": "switch",
    "n": 29,
-   "x": 0.335,
-   "y": 0.1737,
+   "x": 0.3888,
+   "y": 0.1513,
    "shape": "lane"
   },
   {
    "kind": "switch",
    "n": 30,
-   "x": 0.4235,
-   "y": 0.2003,
+   "x": 0.4919,
+   "y": 0.166,
    "shape": "lane"
   },
   {
@@ -318,8 +318,8 @@
   {
    "kind": "coil",
    "n": 13,
-   "x": 0.2403,
-   "y": 0.355,
+   "x": 0.1738,
+   "y": 0.4068,
    "label": "Drop target reset"
   },
   {
@@ -335,6 +335,294 @@
    "x": 0.6893,
    "y": 0.7556,
    "label": "Right sling"
+  },
+  {
+   "kind": "lamp",
+   "n": 0,
+   "x": 0.4483,
+   "y": 0.8855
+  },
+  {
+   "kind": "lamp",
+   "n": 1,
+   "x": 0.4483,
+   "y": 0.8608
+  },
+  {
+   "kind": "lamp",
+   "n": 2,
+   "x": 0.4486,
+   "y": 0.8359
+  },
+  {
+   "kind": "lamp",
+   "n": 3,
+   "x": 0.4404,
+   "y": 0.8123
+  },
+  {
+   "kind": "lamp",
+   "n": 4,
+   "x": 0.4486,
+   "y": 0.7907
+  },
+  {
+   "kind": "lamp",
+   "n": 5,
+   "x": 0.4445,
+   "y": 0.7641
+  },
+  {
+   "kind": "lamp",
+   "n": 6,
+   "x": 0.4486,
+   "y": 0.7425
+  },
+  {
+   "kind": "lamp",
+   "n": 7,
+   "x": 0.4466,
+   "y": 0.7169
+  },
+  {
+   "kind": "lamp",
+   "n": 8,
+   "x": 0.4486,
+   "y": 0.6953
+  },
+  {
+   "kind": "lamp",
+   "n": 9,
+   "x": 0.4507,
+   "y": 0.6687
+  },
+  {
+   "kind": "lamp",
+   "n": 52,
+   "x": 0.3146,
+   "y": 0.5959
+  },
+  {
+   "kind": "lamp",
+   "n": 53,
+   "x": 0.3806,
+   "y": 0.5949
+  },
+  {
+   "kind": "lamp",
+   "n": 54,
+   "x": 0.4486,
+   "y": 0.5939
+  },
+  {
+   "kind": "lamp",
+   "n": 55,
+   "x": 0.5868,
+   "y": 0.5959
+  },
+  {
+   "kind": "lamp",
+   "n": 39,
+   "x": 0.5125,
+   "y": 0.5949
+  },
+  {
+   "kind": "lamp",
+   "n": 43,
+   "x": 0.1723,
+   "y": 0.8832
+  },
+  {
+   "kind": "lamp",
+   "n": 42,
+   "x": 0.5208,
+   "y": 0.7779
+  },
+  {
+   "kind": "lamp",
+   "n": 33,
+   "x": 0.527,
+   "y": 0.1149
+  },
+  {
+   "kind": "lamp",
+   "n": 32,
+   "x": 0.428,
+   "y": 0.1011
+  },
+  {
+   "kind": "lamp",
+   "n": 10,
+   "x": 0.4507,
+   "y": 0.6362
+  },
+  {
+   "kind": "lamp",
+   "n": 13,
+   "x": 0.3134,
+   "y": 0.4263
+  },
+  {
+   "kind": "lamp",
+   "n": 14,
+   "x": 0.3496,
+   "y": 0.6333
+  },
+  {
+   "kind": "lamp",
+   "n": 15,
+   "x": 0.2816,
+   "y": 0.5074
+  },
+  {
+   "kind": "lamp",
+   "n": 16,
+   "x": 0.2569,
+   "y": 0.3057
+  },
+  {
+   "kind": "lamp",
+   "n": 17,
+   "x": 0.2362,
+   "y": 0.288
+  },
+  {
+   "kind": "lamp",
+   "n": 18,
+   "x": 0.2156,
+   "y": 0.2683
+  },
+  {
+   "kind": "lamp",
+   "n": 19,
+   "x": 0.2012,
+   "y": 0.2496
+  },
+  {
+   "kind": "lamp",
+   "n": 20,
+   "x": 0.1806,
+   "y": 0.23
+  },
+  {
+   "kind": "lamp",
+   "n": 21,
+   "x": 0.1579,
+   "y": 0.2083
+  },
+  {
+   "kind": "lamp",
+   "n": 22,
+   "x": 0.1146,
+   "y": 0.3254
+  },
+  {
+   "kind": "lamp",
+   "n": 23,
+   "x": 0.0486,
+   "y": 0.3274
+  },
+  {
+   "kind": "lamp",
+   "n": 24,
+   "x": 0.694,
+   "y": 0.0942
+  },
+  {
+   "kind": "lamp",
+   "n": 25,
+   "x": 0.6785,
+   "y": 0.1131
+  },
+  {
+   "kind": "lamp",
+   "n": 26,
+   "x": 0.5831,
+   "y": 0.2173
+  },
+  {
+   "kind": "lamp",
+   "n": 27,
+   "x": 0.5616,
+   "y": 0.2379
+  },
+  {
+   "kind": "lamp",
+   "n": 28,
+   "x": 0.5385,
+   "y": 0.2628
+  },
+  {
+   "kind": "lamp",
+   "n": 29,
+   "x": 0.5332,
+   "y": 0.4562
+  },
+  {
+   "kind": "lamp",
+   "n": 30,
+   "x": 0.7806,
+   "y": 0.6461
+  },
+  {
+   "kind": "lamp",
+   "n": 31,
+   "x": 0.1186,
+   "y": 0.6476
+  },
+  {
+   "kind": "lamp",
+   "n": 34,
+   "x": 0.6878,
+   "y": 0.4621
+  },
+  {
+   "kind": "lamp",
+   "n": 35,
+   "x": 0.727,
+   "y": 0.4946
+  },
+  {
+   "kind": "lamp",
+   "n": 36,
+   "x": 0.76,
+   "y": 0.5261
+  },
+  {
+   "kind": "lamp",
+   "n": 37,
+   "x": 0.8486,
+   "y": 0.6441
+  },
+  {
+   "kind": "lamp",
+   "n": 38,
+   "x": 0.0542,
+   "y": 0.648
+  },
+  {
+   "kind": "lamp",
+   "n": 44,
+   "x": 0.3393,
+   "y": 0.5723
+  },
+  {
+   "kind": "lamp",
+   "n": 45,
+   "x": 0.4136,
+   "y": 0.5703
+  },
+  {
+   "kind": "lamp",
+   "n": 46,
+   "x": 0.4878,
+   "y": 0.5694
+  },
+  {
+   "kind": "lamp",
+   "n": 47,
+   "x": 0.56,
+   "y": 0.5713
   }
  ]
 }
