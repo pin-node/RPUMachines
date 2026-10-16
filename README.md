@@ -13,7 +13,7 @@ game and tool written for it.
 | Machine | Header | Names | Layout | Physics |
 |---|---|---|---|---|
 | Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | ✓ | ✓ | ✓ |
-| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | ✓ | – | – |
+| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | ✓ | – | ✓ |
 
 Positions in a layout are fractions of the playfield's width and height, from its top-left corner.
 Layouts hold positions only: never artwork, photos or manual pages.

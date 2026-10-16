@@ -1,0 +1,17 @@
+# Williams Scorpion (1980): what the playfield does on its own when a coil fires.
+# The game fires the coil; the machine moves the balls or the targets, and these switches change.
+
+# Two balls in the trough. The outhole kicker feeds a drained ball into it; the ball ramp
+# thrower serves one to the shooter lane.
+trough SW_BALL_1 SW_BALL_2 serve SOL_BALL_RAMP_THROWER feed SOL_OUTHOLE from SW_OUTHOLE balls 2
+
+# The saucers kick out their balls
+physics SOL_LEFT_SAUCER opens SW_LEFT_SAUCER
+physics SOL_RIGHT_SAUCER opens SW_RIGHT_SAUCER
+
+# The 3-target banks stand up
+physics SOL_3_DROP_LEFT_RESET opens SW_LEFT_3_DROP_1 SW_LEFT_3_DROP_2 SW_LEFT_3_DROP_3
+physics SOL_3_DROP_RIGHT_RESET opens SW_RIGHT_3_DROP_1 SW_RIGHT_3_DROP_2 SW_RIGHT_3_DROP_3
+
+# The 5-target bank has two reset coils (SOL_5_DROP_LEFT_RESET, SOL_5_DROP_RIGHT_RESET); which
+# targets each stands up is still to be taken from the manual.
