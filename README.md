@@ -3,6 +3,12 @@
 Machine definitions for RetroPinUpgrade (RPU) games: one set of files per machine, shared by every
 game and tool written for it.
 
+**Why:** every RPU game carries its own copy of its machine's numbers, typed in from the manual.
+Two games for the same machine have two copies, and nothing checks either. Here each machine is
+defined once and checked on every pull request (every number named, no duplicates), so a new game
+starts from it instead of the manual, and tools (test screens, logs, simulators, lamp editors) can
+show real names and the real playfield. It's optional: a game with its own header works as before.
+
 | File | What it holds | Who uses it |
 |---|---|---|
 | `src/<Machine>.h` | Lamp, switch and coil numbers (`LAMP_…`, `SW_…`, `SOL_…`) | Your game's code |
