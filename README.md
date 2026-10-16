@@ -7,12 +7,13 @@ game and tool written for it.
 |---|---|---|
 | `src/<Machine>.h` | Lamp, switch and coil numbers (`LAMP_…`, `SW_…`, `SOL_…`) | Your game's code |
 | `names/<machine>.json` | The manufacturer's name for each lamp, switch and coil | Test screens, logs, simulators |
-| `layouts/<machine>.json` (optional) | Where each lamp, switch and coil sits on the playfield, and what the playfield does on its own (`physics`: which switches each coil opens or closes, e.g. the trough serving the ball opens the outhole switch; `ballStarts`: where the ball rests at power-on) | Simulators ([rpu-sim](https://github.com/wifijt/rpu-sim)), lamp tools |
+| `layouts/<machine>.json` (optional) | Where each lamp, switch and coil sits on the playfield | Simulators ([rpu-sim](https://github.com/wifijt/rpu-sim)), lamp tools |
+| `physics/<machine>.sim` (optional) | What the playfield does when a coil fires: which switches it opens or closes (the outhole kicker serves the ball, so the outhole switch opens), and where the ball rests at power-on | Simulators |
 
-| Machine | Header | Names | Layout |
-|---|---|---|---|
-| Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | ✓ | ✓ |
-| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | ✓ | – |
+| Machine | Header | Names | Layout | Physics |
+|---|---|---|---|---|
+| Bally Star Trek (1979) | `src/BallyStarTrek1979.h` | ✓ | ✓ | ✓ |
+| Williams Scorpion (1980) | `src/WilliamsScorpion1980.h` | ✓ | – | – |
 
 Positions in a layout are fractions of the playfield's width and height, from its top-left corner.
 Layouts hold positions only: never artwork, photos or manual pages.

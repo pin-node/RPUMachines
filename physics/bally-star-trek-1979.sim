@@ -1,0 +1,12 @@
+# Bally Star Trek (1979): what the playfield does on its own when a coil fires.
+# The game fires the coil; the machine moves the ball or the targets, and these switches change.
+
+# The outhole kicker serves the ball: it leaves the outhole
+physics SOL_OUTHOLE opens SW_OUTHOLE
+# The saucer kicks out its ball
+physics SOL_SAUCER opens SW_SAUCER
+# The drop target reset stands all four targets up
+physics SOL_DROP_TARGET_RESET opens SW_DROP_1 SW_DROP_2 SW_DROP_3 SW_DROP_4
+
+# Power on with the ball in the outhole
+close SW_OUTHOLE

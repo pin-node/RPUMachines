@@ -24,8 +24,20 @@ Thanks for helping. One pull request per machine.
 the playfield (`./play.py MyGame --image playfield.jpg`), line the picture up, then in **Edit
 layout** drag each switch, coil and lamp from the lists onto its spot, and **Save layout**. If a
 Visual Pinball table exists for the machine, `tools/vpx_import.py` in rpu-sim places most lamps for
-you. Add `physics` and `ballStarts` (see the Star Trek layout) so a simulator can serve the ball.
-Positions only: never add the picture or any artwork.
+you. Positions only: never add the picture or any artwork.
+
+**Physics (optional):** your game fires coils; the real machine then moves the ball or the targets,
+and switches change. A simulator has no ball, so `physics/<machine>.sim` tells it, coil by coil,
+using the header's names (see the Star Trek file):
+
+```
+# The outhole kicker serves the ball: it leaves the outhole
+physics SOL_OUTHOLE opens SW_OUTHOLE
+# A coil can close switches too, e.g. a ball served onto a shooter-lane switch
+physics SOL_OUTHOLE opens SW_OUTHOLE closes SW_SHOOTER_LANE
+# Where the ball rests at power-on
+close SW_OUTHOLE
+```
 
 **Never include ROM data**: no dumps, no bytes copied from a ROM. Numbers and names from manuals and
 schematics only.

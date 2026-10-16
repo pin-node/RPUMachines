@@ -11,7 +11,10 @@ Runs on every pull request. For each names/<machine>.json:
 - the header is listed in library.properties' includes= and in the README's machine table.
 And for each layouts/<machine>.json (where things sit on the playfield, for simulators and tools):
 - it matches a names file, its items are lamps, switches or coils the header defines, at x and y
-  between 0 and 1 (fractions of the playfield), and its physics (which switches each coil opens or closes) and ballStarts name coils and switches the header defines.
+  between 0 and 1 (fractions of the playfield). Layouts hold positions only.
+And for each physics/<machine>.sim (what the playfield does on its own when a coil fires):
+- it matches a names file, and every line is 'physics SOL_X opens SW_A ... [closes SW_B ...]' or
+  'close SW_X' (where the ball rests at power-on), naming coils and switches the header defines.
 """
 import json
 import re
@@ -110,15 +113,37 @@ def check_layout(path: Path, defined_by_header: dict) -> list:
         for c in ("x", "y"):
             if not isinstance(it.get(c), (int, float)) or not 0 <= it[c] <= 1:
                 problems.append(f"{k} {it.get('n')}: {c} must be between 0 and 1")
-    for ph in d.get("physics", []):
-        if ph.get("coil") not in defined["solenoids"]:
-            problems.append(f"physics: coil {ph.get('coil')} isn't defined in {header}")
-        for sw in ph.get("opens", []) + ph.get("closes", []):
-            if sw not in defined["switches"]:
-                problems.append(f"physics: switch {sw} isn't defined in {header}")
-    for sw in d.get("ballStarts", []):
-        if sw not in defined["switches"]:
-            problems.append(f"ballStarts: switch {sw} isn't defined in {header}")
+    for key in ("physics", "ballStarts"):
+        if key in d:
+            problems.append(f'"{key}" belongs in physics/{path.stem}.sim, not the layout')
+    return problems
+
+
+def header_names(header: Path) -> set:
+    return set(re.findall(r"^\s*#define\s+((?:SW|SOL)_\w+)\s+\d+\b", header.read_text(), re.M))
+
+
+def check_physics(path: Path, header_by_id: dict) -> list:
+    """physics/<machine>.sim: physics SOL_X opens SW_A ... [closes SW_B ...], close SW_X, comments."""
+    if path.stem not in header_by_id:
+        return [f"no names/{path.stem}.json for this machine"]
+    header = header_by_id[path.stem]
+    names = header_names(ROOT / "src" / header)
+    problems = []
+    for i, line in enumerate(path.read_text().splitlines(), 1):
+        words = line.split("#")[0].split()
+        if not words:
+            continue
+        if words[0] == "close" and len(words) == 2:
+            want = [(words[1], "SW_")]
+        elif words[0] == "physics" and len(words) >= 4 and words[2] in ("opens", "closes"):
+            want = [(words[1], "SOL_")] + [(w, "SW_") for w in words[2:] if w not in ("opens", "closes")]
+        else:
+            problems.append(f"line {i}: expected 'physics SOL_X opens SW_A ...' or 'close SW_X'")
+            continue
+        for w, prefix in want:
+            if not w.startswith(prefix) or w not in names:
+                problems.append(f"line {i}: {w} isn't a {prefix} name in {header}")
     return problems
 
 
@@ -156,6 +181,19 @@ def main() -> None:
         total += len(problems)
         if not problems:
             print(f"layouts/{path.name}: OK")
+    header_by_id = {}
+    for path in files:
+        try:
+            header_by_id[path.stem] = json.loads(path.read_text())["header"]
+        except (json.JSONDecodeError, KeyError):
+            pass
+    for path in sorted((ROOT / "physics").glob("*.sim")):
+        problems = check_physics(path, header_by_id)
+        for p in problems:
+            print(f"physics/{path.name}: {p}")
+        total += len(problems)
+        if not problems:
+            print(f"physics/{path.name}: OK")
     for h in sorted(headers - named):
         print(f"src/{h}: no names/ file names it")
         total += 1
